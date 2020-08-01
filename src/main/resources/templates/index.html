@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie List</title>
+    <link rel="stylesheet" th:href="@{css/style.css}" type="text/css"/>
+</head>
+<body>
+<div class="container">
+    <h1>Movies</h1>
+    <table class="responsive-table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Genre</th>
+            <th>Release Date</th>
+            <th>IMDB</th>
+        </tr>
+        <tr th:each="movie : ${moviesList}">
+            <td th:text="${movie.id}"></td>
+            <td th:text="${movie.name}"></td>
+            <td th:text="${movie.genre}"></td>
+            <td th:text="${movie.releaseDate}"></td>
+            <td th:text="${movie.imdb}"></td>
+            <td><a th:href="@{/showUpdateForm/{id}(id=${movie.id})}">Edit</a></td>
+            <td><a th:href="@{/deleteMovie/{id}(id=${movie.id})}">Delete</a></td>
+        </tr>
+    </table>
+    <a href="/addMovieForm">Add New Movie</a>
+</div>
+</body>
+</html>
